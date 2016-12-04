@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 public class OpenGLES20Activity extends Activity {
 
+    //REFERENCE: https://developer.android.com/training/graphics/opengl/draw.html
+    //http://www.programering.com/a/MDM3cjNwATU.html
     private GLSurfaceView mGLView;
 
     @Override
