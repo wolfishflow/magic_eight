@@ -35,53 +35,33 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        Log.d(TAG, "");
-        Boolean firstTime = true;
-        Boolean real = sharedPref.getBoolean("new", firstTime);
-        Log.d(TAG, firstTime.toString());
-        DatabaseConnector dbConnector = new DatabaseConnector(this);
-        Boolean hasStuff = dbConnector.containsSomething();
-        if (!hasStuff) {
-            //Do database generate here.
-            //after take them to user fragment.
-            Log.d(TAG, "b4 frag");
-            fr = new CreateUserFragment();
-            fm = getFragmentManager();
-            ft = fm.beginTransaction();
-            ft.replace(R.id.frlt_fragment_container_home, fr);
-            ft.commit();
-        } else {
-            Log.d(TAG, "not first time");
-            fr = new HomeFragment();
-            fm = getFragmentManager();
-            ft = fm.beginTransaction();
-            ft.replace(R.id.frlt_fragment_container_home, fr);
-            ft.commit();
-        }
 
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
-                if (tabId == R.id.tab_home) {
-//                    fr = new HomeFragment();
-//                    fm = getFragmentManager();
-//                    ft = fm.beginTransaction();
-//                    ft.replace(R.id.frlt_fragment_container_home, fr);
-//                    ft.commit();
+                if (tabId == R.id.tab_horoscopes) {
+                    DatabaseConnector dbConnector = new DatabaseConnector(getApplicationContext());
+                    Boolean hasStuff = dbConnector.containsSomething();
+                    if (!hasStuff) {
+                        //Do database generate here.
+                        //after take them to user fragment.
+                        Log.d(TAG, "b4 frag");
+                        fr = new CreateUserFragment();
+                        fm = getFragmentManager();
+                        ft = fm.beginTransaction();
+                        ft.replace(R.id.frlt_fragment_container_home, fr);
+                        ft.commit();
+                    } else {
+                        Log.d(TAG, "not first time");
+                        fr = new HomeFragment();
+                        fm = getFragmentManager();
+                        ft = fm.beginTransaction();
+                        ft.replace(R.id.frlt_fragment_container_home, fr);
+                        ft.commit();
+                    }
                 } else if (tabId == R.id.tab_magic_eight) {
-//                    fr = new ProfileFragment_();
-//                    fm = getFragmentManager();
-//                    ft = fm.beginTransaction();
-//                    ft.replace(R.id.frlt_fragment_container_home, fr);
-//                    ft.commit();
-                } else if (tabId == R.id.tab_horoscopes) {
-                    fr = new HomeFragment();
-                    fm = getFragmentManager();
-                    ft = fm.beginTransaction();
-                    ft.replace(R.id.frlt_fragment_container_home, fr);
-                    ft.commit();
-                } else if (tabId == R.id.tab_settings) {
+                }  else if (tabId == R.id.tab_settings) {
                     fr = new SettingsFragment();
                     fm = getFragmentManager();
                     ft = fm.beginTransaction();

@@ -27,6 +27,7 @@ public class CreateUserFragment extends Fragment {
     public final String TAG = "CreateFragment";
 
 
+
     TextInputLayout tilName;
     TextInputLayout tilDate;
     EditText etName;

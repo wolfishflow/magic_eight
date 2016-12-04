@@ -41,7 +41,7 @@ public class DatabaseConnector {
 
     public int delete(String name, String sign) {
         open();
-        int rows = database.delete(TABLE_NAME, "name=" + name + " AND sign=" + sign, null);
+        int rows = database.delete(TABLE_NAME, "name='" + name + "' AND sign='" + sign +"'", null);
         database.close();
 
         return rows;
