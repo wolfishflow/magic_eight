@@ -25,6 +25,7 @@
         </activity>
 
         <activity android:name=".FortuneActivity" />
+        <activity android:name=".home.HomeActivity" />
 
     </application>
 
