@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        icon="@drawable/ic_home_white_24px"
+        id="@+id/tab_home"
+        title="Home"
+        barColorWhenSelected="@color/colorPrimary"/>
+    <tab
+        icon="@drawable/ic_person_white_24px"
+        id="@+id/tab_magic_eight"
+        title="Magic Eight"
+        barColorWhenSelected="@color/colorPrimary"/>
+    <tab
+        icon="@drawable/ic_event_white_24px"
+        id="@+id/tab_horoscopes"
+        title="Horoscopes"
+        barColorWhenSelected="@color/colorPrimary"/>
+    <tab
+        icon="@drawable/ic_event_white_24px"
+        id="@+id/tab_settings"
+        title="Settings"
+        barColorWhenSelected="@color/colorPrimary"/>
+</tabs>

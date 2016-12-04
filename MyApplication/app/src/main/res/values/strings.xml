@@ -1,5 +1,22 @@
 <resources>
-    <string name="app_name">Magic_Eight</string>
+    <string name="app_name">Magic Eight</string>
+    <string name="name">Name</string>
+    <string name="day">Day</string>
+    <string name="confirm">Confirm</string>
+    <string-array name="ddl_months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
     <string-array name="responses">
         <item>It is certain</item>
         <item>It is decidedly so</item>
