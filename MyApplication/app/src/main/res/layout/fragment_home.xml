@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/stars"
+    android:fitsSystemWindows="true">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_userinfo"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:cardUseCompatPadding="true"
+        android:backgroundTint="#55555599"
+        card_view:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your daily horoscope is: "
+                android:id="@+id/tv_label"
+                android:textSize="24sp"
+                android:textStyle="italic"
+                android:textColor="#ffffff"
+                style="@android:style/Widget.DeviceDefault.Light.TextView" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_label"
+                android:text="You will die a horrible, horrible death."
+                android:id="@+id/tv_horoscope"
+                android:textColor="#ffffff"
+                android:textSize="36sp" />
+
+        </RelativeLayout>s
+
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
