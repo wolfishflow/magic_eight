@@ -1,6 +1,8 @@
 package codebusters.magic_eight.user;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import java.util.Calendar;
 
 import codebusters.magic_eight.R;
 import codebusters.magic_eight.dao.DatabaseConnector;
+import codebusters.magic_eight.home.HomeFragment;
 
 /**
  * Created by alansimon on 2016-12-04.
@@ -25,8 +28,9 @@ import codebusters.magic_eight.dao.DatabaseConnector;
 public class CreateUserFragment extends Fragment {
 
     public final String TAG = "CreateFragment";
-
-
+    private Fragment fr;
+    private FragmentManager fm;
+    private FragmentTransaction ft;
 
     TextInputLayout tilName;
     TextInputLayout tilDate;
@@ -113,10 +117,12 @@ public class CreateUserFragment extends Fragment {
                 birthDate.set(Calendar.DATE, intDay);
                 sign = dbConnect.getSign(birthDate);
                 dbConnect.insert(strName, sign);
-                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putBoolean("new", false);
-                editor.commit();
+
+                fr = new HomeFragment();
+                fm = getFragmentManager();
+                ft = fm.beginTransaction();
+                ft.replace(R.id.frlt_fragment_container_home, fr);
+                ft.commit();
             }
         });
 
