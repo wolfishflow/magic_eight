@@ -38,7 +38,7 @@
                 android:text="You will die a horrible, horrible death."
                 android:id="@+id/tv_horoscope"
                 android:textColor="#ffffff"
-                android:textSize="36sp" />
+                android:textSize="30sp" />
 
         </RelativeLayout>s
 

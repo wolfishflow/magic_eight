@@ -35,7 +35,7 @@ public class FortuneUtility {
             }
 
             JSONObject json = new JSONObject(sb.toString());
-            String fortune = json.getString("fortune");
+            String fortune = json.getJSONObject("horoscope").getString("horoscope");
 
             return fortune;
 
