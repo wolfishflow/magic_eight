@@ -15,9 +15,10 @@ public class FortuneActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String fortune;
+        String sign = "virgo"; // replace with getting user's sign
         TextView txtFortune = (TextView) findViewById(R.id.fortune_test);
         try {
-             fortune = new FortuneTask().execute().get();
+             fortune = new FortuneTask().execute(sign).get();
         } catch (Exception e) {
             e.printStackTrace();
             fortune = "Fortunes can't be read right now.";
