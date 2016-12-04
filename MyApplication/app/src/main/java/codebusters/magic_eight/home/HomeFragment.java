@@ -36,12 +36,13 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
 
         db = new DatabaseConnector(getContext());
-        String sign = null, fortune;
+        String sign = "", fortune;
 
         Cursor cursor = db.getUsers();
         if (cursor.moveToFirst()) {
             do {
                 sign = cursor.getString(cursor.getColumnIndex("sign"));
+                Log.d(DEBUG_TAG, sign);
             } while (cursor.moveToNext());
         }
 

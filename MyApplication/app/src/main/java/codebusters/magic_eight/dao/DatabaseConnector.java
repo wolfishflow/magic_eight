@@ -39,11 +39,15 @@ public class DatabaseConnector {
     }
 
     public Cursor getUserById(int id) {
-        return database.query(TABLE_NAME, null, "id=" + id, null, null, null, null);
+        open();
+        Cursor cursor = database.query(TABLE_NAME, null, "id=" + id, null, null, null, null);
+        return cursor;
     }
 
     public Cursor getUsers() {
-        return database.query(TABLE_NAME, new String[] {"name", "sign"},null, null, null, null, null);
+        open();
+        Cursor cursor = database.query(TABLE_NAME, new String[] {"name", "sign"},null, null, null, null, null);
+        return cursor;
     }
 
     public String getSign(Calendar birthday) {
