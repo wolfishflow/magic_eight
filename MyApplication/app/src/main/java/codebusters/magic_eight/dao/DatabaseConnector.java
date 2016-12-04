@@ -2,6 +2,7 @@ package codebusters.magic_eight.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -35,6 +36,14 @@ public class DatabaseConnector {
         open();
         database.insert(TABLE_NAME, null,cv);
         database.close();
+    }
+
+    public Cursor getUserById(int id) {
+        return database.query(TABLE_NAME, null, "id=" + id, null, null, null, null);
+    }
+
+    public Cursor getUsers() {
+        return database.query(TABLE_NAME, new String[] {"name", "sign"},null, null, null, null, null);
     }
 
     public String getSign(Calendar birthday) {
