@@ -3,6 +3,7 @@
     <string name="name">Name</string>
     <string name="day">Day</string>
     <string name="confirm">Confirm</string>
+    <string name="delete">Delete User</string>
     <string-array name="ddl_months">
         <item>January</item>
         <item>February</item>

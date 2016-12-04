@@ -21,7 +21,7 @@ public class DatabaseConnector {
     private DatabasesOpenHelper databasesOpenHelper;
 
     public DatabaseConnector(Context context) {
-        databasesOpenHelper = new DatabasesOpenHelper(context, DATABASE_NAME, null, 0);
+        databasesOpenHelper = new DatabasesOpenHelper(context, DATABASE_NAME, null, 1);
     }
 
     public void open() throws SQLException {
