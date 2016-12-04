@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -49,16 +50,40 @@ public class DatabaseConnector {
         return doesContain;
     }
 
-    public Cursor getUserById(int id) {
+    public User getUserById(int id) {
         open();
         Cursor cursor = database.query(TABLE_NAME, null, "id=" + id, null, null, null, null);
-        return cursor;
+
+        User user = new User();
+        if (cursor.moveToFirst()) {
+            do {
+                user.setName(cursor.getString(cursor.getColumnIndex("name")));
+                user.setSign(cursor.getString(cursor.getColumnIndex("sign")));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        database.close();
+
+        return user;
     }
 
-    public Cursor getUsers() {
+    public ArrayList<User> getUsers() {
         open();
         Cursor cursor = database.query(TABLE_NAME, new String[] {"name", "sign"},null, null, null, null, null);
-        return cursor;
+
+        ArrayList<User> users = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                User user = new User();
+                user.setName(cursor.getString(cursor.getColumnIndex("name")));
+                user.setSign(cursor.getString(cursor.getColumnIndex("sign")));
+                users.add(user);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        database.close();
+
+        return users;
     }
 
     public String getSign(Calendar birthday) {
