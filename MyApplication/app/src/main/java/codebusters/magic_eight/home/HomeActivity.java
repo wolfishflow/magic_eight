@@ -41,8 +41,6 @@ public class HomeActivity extends AppCompatActivity {
         Log.d(TAG, firstTime.toString());
         DatabaseConnector dbConnector = new DatabaseConnector(this);
         Boolean hasStuff = dbConnector.containsSomething();
-
-
         if (!hasStuff) {
             //Do database generate here.
             //after take them to user fragment.
@@ -67,11 +65,11 @@ public class HomeActivity extends AppCompatActivity {
             public void onTabSelected(@IdRes int tabId) {
                 if (tabId == R.id.tab_home) {
                     //Toast.makeText(HomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                    fr = new HomeFragment();
-                    fm = getFragmentManager();
-                    ft = fm.beginTransaction();
-                    ft.replace(R.id.frlt_fragment_container_home, fr);
-                    ft.commit();
+//                    fr = new HomeFragment();
+//                    fm = getFragmentManager();
+//                    ft = fm.beginTransaction();
+//                    ft.replace(R.id.frlt_fragment_container_home, fr);
+//                    ft.commit();
                 } else if (tabId == R.id.tab_magic_eight) {
 //                    fr = new ProfileFragment_();
 //                    fm = getFragmentManager();
