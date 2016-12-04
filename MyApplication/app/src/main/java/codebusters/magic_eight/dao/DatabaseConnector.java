@@ -15,6 +15,7 @@ import java.util.Date;
 public class DatabaseConnector {
 
     private static final String DATABASE_NAME = "MagicEight";
+    private static final String TABLE_NAME = "user";
     private SQLiteDatabase database;
     private DatabasesOpenHelper databasesOpenHelper;
 
@@ -24,6 +25,16 @@ public class DatabaseConnector {
 
     public void open() throws SQLException {
         database = databasesOpenHelper.getWritableDatabase();
+    }
+
+    public void insert(String name, String sign) {
+        ContentValues cv = new ContentValues();
+        cv.put("name", name);
+        cv.put("sign", sign);
+
+        open();
+        database.insert(TABLE_NAME, null,cv);
+        database.close();
     }
 
     public String getSign(Calendar birthday) {
