@@ -1,6 +1,8 @@
 package codebusters.magic_eight.user;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.util.Log;
@@ -11,7 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.Calendar;
+
 import codebusters.magic_eight.R;
+import codebusters.magic_eight.dao.DatabaseConnector;
 
 /**
  * Created by alansimon on 2016-12-04.
@@ -58,36 +63,59 @@ public class CreateUserFragment extends Fragment {
                     tilDate.setError("Day is Required!");
                 }
 
+                DatabaseConnector dbConnect = new DatabaseConnector(getContext());
+
                 int intDay = Integer.parseInt(strDay);
 
                 String strMonth = sprMonth.getSelectedItem().toString();
-                Log.d(TAG, strMonth);
+                String sign = "";
+                Calendar birthDate = Calendar.getInstance();
                 switch (strMonth) {
                     case "January":
+                        birthDate.set(Calendar.MONTH, 0);
                         break;
                     case "February":
+                        birthDate.set(Calendar.MONTH, 1);
                         break;
                     case "March":
+                        birthDate.set(Calendar.MONTH, 2);
                         break;
                     case "April":
+                        birthDate.set(Calendar.MONTH, 3);
                         break;
                     case "May":
+                        birthDate.set(Calendar.MONTH, 4);
                         break;
                     case "June":
+                        birthDate.set(Calendar.MONTH, 5);
                         break;
                     case "July":
+                        birthDate.set(Calendar.MONTH, 6);
                         break;
                     case "August":
+                        birthDate.set(Calendar.MONTH, 7);
                         break;
                     case "September":
+                        birthDate.set(Calendar.MONTH, 8);
                         break;
                     case "October":
+                        birthDate.set(Calendar.MONTH, 9);
                         break;
                     case "November":
+                        birthDate.set(Calendar.MONTH, 10);
                         break;
                     case "December":
+                        birthDate.set(Calendar.MONTH, 11);
                         break;
                 }
+
+                birthDate.set(Calendar.DATE, intDay);
+                sign = dbConnect.getSign(birthDate);
+                dbConnect.insert(strName, sign);
+                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putBoolean("new", false);
+                editor.commit();
             }
         });
 
