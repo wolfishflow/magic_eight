@@ -18,10 +18,11 @@ import java.nio.charset.Charset;
 
 public class FortuneUtility {
 
-    public static String getFortune() {
+    public static String getFortune(String sign) {
 
         try {
-            URL url = new URL("http://laddr.xyz:3113/fortune");
+//            URL url = new URL("http://laddr.xyz:3113/fortune");
+            URL url = new URL("http://widgets.fabulously40.com/horoscope.json?sign=" + sign);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
 
