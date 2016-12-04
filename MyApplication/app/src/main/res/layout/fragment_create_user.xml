@@ -47,20 +47,6 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/til_date2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/et_da2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/day"
-                    android:inputType="date"/>
-
-            </android.support.design.widget.TextInputLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -77,7 +63,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/spr_academicstatus"
+                    android:id="@+id/spr_months"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -93,13 +79,12 @@
 
     <Button
         android:layout_below="@+id/cv_userinfo"
-        android:id="@+id/btn_signup_add_user"
+        android:id="@+id/btn_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
         android:text="@string/confirm"
         android:textColor="@android:color/white"
-        android:onClick="btnConfirmClick"
         android:textStyle="bold" />
 
 </RelativeLayout>

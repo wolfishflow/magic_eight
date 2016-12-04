@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
@@ -21,6 +22,8 @@ import codebusters.magic_eight.user.CreateUserFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
+    public final String TAG = "HomeActivity";
+
     private Fragment fr;
     private FragmentManager fm;
     private FragmentTransaction ft;
@@ -30,16 +33,19 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-
+        Log.d(TAG, "");
         Boolean firstTime = true;
         sharedPref.getBoolean("new", firstTime);
+        Log.d(TAG, firstTime.toString());
         if (firstTime) {
             //Do database generate here.
             //after take them to user fragment.
+            Log.d(TAG, "b4 frag");
             fr = new CreateUserFragment();
             fm = getFragmentManager();
             ft = fm.beginTransaction();
             ft.replace(R.id.frlt_fragment_container_home, fr);
+            ft.commit();
         } else {
             //ignore db generate here
             //head to main fragment
@@ -82,7 +88,6 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
-
 
     }
 }
