@@ -14,6 +14,7 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import codebusters.magic_eight.R;
+import codebusters.magic_eight.dao.DatabaseConnector;
 import codebusters.magic_eight.settings.SettingsFragment;
 import codebusters.magic_eight.user.CreateUserFragment;
 
@@ -38,7 +39,11 @@ public class HomeActivity extends AppCompatActivity {
         Boolean firstTime = true;
         Boolean real = sharedPref.getBoolean("new", firstTime);
         Log.d(TAG, firstTime.toString());
-        if (real) {
+        DatabaseConnector dbConnector = new DatabaseConnector(this);
+        Boolean hasStuff = dbConnector.containsSomething();
+
+
+        if (!hasStuff) {
             //Do database generate here.
             //after take them to user fragment.
             Log.d(TAG, "b4 frag");
@@ -55,7 +60,6 @@ public class HomeActivity extends AppCompatActivity {
             ft.replace(R.id.frlt_fragment_container_home, fr);
             ft.commit();
         }
-
 
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {

@@ -10,8 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import codebusters.magic_eight.R;
 import codebusters.magic_eight.dao.DatabaseConnector;
+import codebusters.magic_eight.dao.User;
 import codebusters.magic_eight.utility.FortuneTask;
 
 /**
@@ -38,14 +41,11 @@ public class HomeFragment extends Fragment {
         db = new DatabaseConnector(getContext());
         String sign = "", fortune;
 
-        Cursor cursor = db.getUsers();
-        if (cursor.moveToFirst()) {
-            do {
-                sign = cursor.getString(cursor.getColumnIndex("sign"));
-                Log.d(DEBUG_TAG, sign);
-            } while (cursor.moveToNext());
+        ArrayList<User> userArrayList = db.getUsers();
+        if (userArrayList.size()>0)
+        {
+            sign = userArrayList.get(0).getSign();
         }
-
         TextView txtFortune = (TextView) getActivity().findViewById(R.id.tv_horoscope);
         try {
             fortune = new FortuneTask().execute(sign).get();
