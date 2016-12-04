@@ -40,6 +40,8 @@ public class SettingsFragment extends Fragment{
         {
             TextView tvName = (TextView) getActivity().findViewById(R.id.tv_settings_name);
             tvName.setText(userArrayList.get(0).getName());
+            TextView tvSign = (TextView) getActivity().findViewById(R.id.tv_settings_sign);
+            tvSign.setText(userArrayList.get(0).getSign());
         }
 
         super.onActivityCreated(savedInstanceState);
