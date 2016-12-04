@@ -39,6 +39,14 @@ public class DatabaseConnector {
         database.close();
     }
 
+    public int delete(String name, String sign) {
+        open();
+        int rows = database.delete(TABLE_NAME, "name=" + name + " AND sign=" + sign, null);
+        database.close();
+
+        return rows;
+    }
+
     public boolean containsSomething() {
         boolean doesContain = false;
 
