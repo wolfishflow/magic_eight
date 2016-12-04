@@ -38,6 +38,17 @@ public class DatabaseConnector {
         database.close();
     }
 
+    public boolean containsSomething() {
+        boolean doesContain = false;
+
+        open();
+        Cursor cursor = database.query(TABLE_NAME, new String[] {"name", "sign"},null, null, null, null, null);
+        doesContain = cursor.moveToNext();
+        database.close();
+
+        return doesContain;
+    }
+
     public Cursor getUserById(int id) {
         open();
         Cursor cursor = database.query(TABLE_NAME, null, "id=" + id, null, null, null, null);
