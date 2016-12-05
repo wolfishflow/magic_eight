@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.roughike.bottombar.BottomBar;
+
 import java.util.Calendar;
 
 import codebusters.magic_eight.R;
@@ -70,59 +72,141 @@ public class CreateUserFragment extends Fragment {
 
                 DatabaseConnector dbConnect = new DatabaseConnector(getContext());
 
-                int intDay = Integer.parseInt(strDay);
+                try {
+                    int intDay = Integer.parseInt(strDay);
+                    String strMonth = sprMonth.getSelectedItem().toString();
+                    String sign = "";
+                    Calendar birthDate = Calendar.getInstance();
+                    Boolean valid = true;
+                    switch (strMonth) {
+                        case "January":
+                            if (intDay>31 || intDay == 0){
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 0);
+                            break;
+                        case "February":
+                            if (intDay>29 || intDay == 0) {
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 1);
+                            break;
+                        case "March":
+                            if (intDay>31 || intDay == 0) {
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
 
-                String strMonth = sprMonth.getSelectedItem().toString();
-                String sign = "";
-                Calendar birthDate = Calendar.getInstance();
-                switch (strMonth) {
-                    case "January":
-                        birthDate.set(Calendar.MONTH, 0);
-                        break;
-                    case "February":
-                        birthDate.set(Calendar.MONTH, 1);
-                        break;
-                    case "March":
-                        birthDate.set(Calendar.MONTH, 2);
-                        break;
-                    case "April":
-                        birthDate.set(Calendar.MONTH, 3);
-                        break;
-                    case "May":
-                        birthDate.set(Calendar.MONTH, 4);
-                        break;
-                    case "June":
-                        birthDate.set(Calendar.MONTH, 5);
-                        break;
-                    case "July":
-                        birthDate.set(Calendar.MONTH, 6);
-                        break;
-                    case "August":
-                        birthDate.set(Calendar.MONTH, 7);
-                        break;
-                    case "September":
-                        birthDate.set(Calendar.MONTH, 8);
-                        break;
-                    case "October":
-                        birthDate.set(Calendar.MONTH, 9);
-                        break;
-                    case "November":
-                        birthDate.set(Calendar.MONTH, 10);
-                        break;
-                    case "December":
-                        birthDate.set(Calendar.MONTH, 11);
-                        break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 2);
+                            break;
+                        case "April":
+                            if (intDay>30 || intDay == 0) {
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 3);
+                            break;
+                        case "May":
+                            if (intDay>31 || intDay == 0) {
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 4);
+                            break;
+                        case "June":
+                            if (intDay>30 || intDay == 0) {
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 5);
+                            break;
+                        case "July":
+                            if (intDay>31 || intDay == 0) {
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 6);
+                            break;
+                        case "August":
+                            if (intDay>31 || intDay == 0) {
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 7);
+                            break;
+                        case "September":
+                            if (intDay>30) {
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 8);
+                            break;
+                        case "October":
+                            if (intDay>31 || intDay == 0) {
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 9);
+                            break;
+                        case "November":
+                            if (intDay>30 || intDay == 0) {
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 10);
+                            break;
+                        case "December":
+                            if (intDay>31 || intDay == 0) {
+                                tilDate.setError("Invalid day!");
+                                valid = false;
+                                break;
+                            }
+                            valid = true;
+                            birthDate.set(Calendar.MONTH, 11);
+                            break;
+                    }
+
+                    if (valid) {
+
+                        birthDate.set(Calendar.DATE, intDay);
+                        sign = dbConnect.getSign(birthDate);
+                        dbConnect.insert(strName, sign);
+
+                        fr = new HomeFragment();
+                        fm = getFragmentManager();
+                        ft = fm.beginTransaction();
+                        ft.replace(R.id.frlt_fragment_container_home, fr);
+                        ft.commit();
+                    }
+
+                }catch (NumberFormatException e)
+                {
+                    tilDate.setError("Day is Required!");
                 }
-
-                birthDate.set(Calendar.DATE, intDay);
-                sign = dbConnect.getSign(birthDate);
-                dbConnect.insert(strName, sign);
-
-                fr = new HomeFragment();
-                fm = getFragmentManager();
-                ft = fm.beginTransaction();
-                ft.replace(R.id.frlt_fragment_container_home, fr);
-                ft.commit();
             }
         });
 

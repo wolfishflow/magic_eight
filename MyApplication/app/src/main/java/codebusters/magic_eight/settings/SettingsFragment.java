@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.roughike.bottombar.BottomBar;
+
 import java.util.ArrayList;
 
 import codebusters.magic_eight.R;
@@ -60,11 +62,15 @@ public class SettingsFragment extends Fragment{
 
                     dbConnector.delete(name, sign);
 
-                    fr = new CreateUserFragment();
-                    fm = getFragmentManager();
-                    ft = fm.beginTransaction();
-                    ft.replace(R.id.frlt_fragment_container_home, fr);
-                    ft.commit();
+//                    fr = new CreateUserFragment();
+//                    fm = getFragmentManager();
+//                    ft = fm.beginTransaction();
+//                    ft.replace(R.id.frlt_fragment_container_home, fr);
+//                    ft.commit();
+
+                    BottomBar bottomBar = (BottomBar) getActivity().findViewById(R.id.bottomBar);
+
+                    bottomBar.selectTabWithId(R.id.tab_horoscopes);
 
                 }});
         }
