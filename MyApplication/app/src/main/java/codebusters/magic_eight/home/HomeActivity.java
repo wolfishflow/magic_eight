@@ -20,6 +20,7 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 import codebusters.magic_eight.R;
 import codebusters.magic_eight.dao.DatabaseConnector;
+import codebusters.magic_eight.openGL.OpenGLFragment;
 import codebusters.magic_eight.settings.SettingsFragment;
 import codebusters.magic_eight.user.CreateUserFragment;
 
@@ -36,6 +37,7 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
     private FragmentTransaction ft;
     private long lastUpdate;
     private SensorManager sensorManager;
+    private BottomBar bottomBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,7 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         lastUpdate = System.currentTimeMillis();
 
-        BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
@@ -71,7 +73,12 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
                         ft.commit();
                     }
                 } else if (tabId == R.id.tab_magic_eight) {
-                }  else if (tabId == R.id.tab_settings) {
+                    fr = new OpenGLFragment();
+                    fm = getFragmentManager();
+                    ft = fm.beginTransaction();
+                    ft.replace(R.id.frlt_fragment_container_home, fr);
+                    ft.commit();
+                } else if (tabId == R.id.tab_settings) {
                     fr = new SettingsFragment();
                     fm = getFragmentManager();
                     ft = fm.beginTransaction();
@@ -113,8 +120,11 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
 
             //switch to Magic8 ball tab here
             String[] magic = getResources().getStringArray(R.array.responses);
-            String response = magic[(int)(Math.random() * magic.length)];
+            String response = magic[(int) (Math.random() * magic.length)];
             Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
+
+
+            bottomBar.selectTabWithId(R.id.tab_magic_eight);
 
         }
     }
