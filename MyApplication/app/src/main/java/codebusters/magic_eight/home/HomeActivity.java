@@ -5,6 +5,10 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
@@ -22,13 +26,14 @@ import codebusters.magic_eight.user.CreateUserFragment;
  * Created by alansimon on 2016-12-04.
  */
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements SensorEventListener {
 
     public final String TAG = "HomeActivity";
 
     private Fragment fr;
     private FragmentManager fm;
     private FragmentTransaction ft;
+    private long lastUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,5 +76,38 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            getAccelerometer(event);
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
+    public void getAccelerometer(SensorEvent event) {
+        float[] values = event.values;
+
+        float x = values[0];
+        float y = values[1];
+        float z = values[2];
+
+        float accelarationSquareRoot = (x * x + y * y + z * z)
+                / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
+
+        long actualTime = System.currentTimeMillis();
+        if (accelarationSquareRoot >= 2) {
+            if (actualTime - lastUpdate < 200) {
+                return;
+            }
+            lastUpdate = actualTime;
+
+            //switch to Magic8 ball tab here
+
+        }
     }
 }
