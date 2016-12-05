@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.roughike.bottombar.BottomBar;
+
 import java.util.ArrayList;
 
 import codebusters.magic_eight.R;
@@ -38,6 +40,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
 
+        BottomBar bottomBar = (BottomBar) getActivity().findViewById(R.id.bottomBar);
         db = new DatabaseConnector(getContext());
         String sign = "", fortune;
 
