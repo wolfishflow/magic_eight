@@ -1,4 +1,4 @@
-package codebusters.magic_eight;
+package codebusters.magic_eight.openGL;
 
 import android.opengl.GLES20;
 import android.util.Log;

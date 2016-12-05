@@ -1,4 +1,4 @@
-package codebusters.magic_eight;
+package codebusters.magic_eight.openGL;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;

@@ -1,10 +1,11 @@
-package codebusters.magic_eight;
+package codebusters.magic_eight.openGL;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import codebusters.magic_eight.R;
 import codebusters.magic_eight.utility.FortuneTask;
 
 public class FortuneActivity extends AppCompatActivity {
