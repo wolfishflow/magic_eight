@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/stars">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cv_userinfo"
-        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#55555599"
         app:cardUseCompatPadding="true"
         card_view:cardElevation="4dp">
 
@@ -17,42 +19,52 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <TextView
                 android:id="@+id/tv_lbl_name"
-                android:text="Name:"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                android:textColor="#ffffff"
+                android:textSize="30sp"
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/tv_settings_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
                 android:layout_toRightOf="@+id/tv_lbl_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textColor="#ffffff" />
 
             <TextView
-                android:layout_below="@id/tv_lbl_name"
                 android:id="@+id/tv_lbl_sign"
-                android:text="Sign:"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_lbl_name"
+                android:text="Sign:"
+                android:textColor="#ffffff"
+                android:textSize="30sp"
+                android:textStyle="italic" />
 
             <TextView
-                android:layout_below="@id/tv_settings_name"
                 android:id="@+id/tv_settings_sign"
-                android:layout_toRightOf="@id/tv_lbl_sign"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:layout_below="@id/tv_settings_name"
+                android:layout_toRightOf="@id/tv_lbl_sign"
+                android:textColor="#ffffff" />
 
         </RelativeLayout>
-        
+
     </android.support.v7.widget.CardView>
 
     <Button
-        android:layout_below="@+id/cv_userinfo"
+        android:background="#55555599"
         android:id="@+id/btn_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/cv_userinfo"
         android:layout_marginTop="20dip"
         android:text="@string/delete"
         android:textColor="@android:color/white"
