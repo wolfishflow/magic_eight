@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
@@ -34,12 +35,16 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
     private FragmentManager fm;
     private FragmentTransaction ft;
     private long lastUpdate;
+    private SensorManager sensorManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        lastUpdate = System.currentTimeMillis();
 
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
@@ -100,14 +105,31 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
                 / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
 
         long actualTime = System.currentTimeMillis();
-        if (accelarationSquareRoot >= 2) {
+        if (accelarationSquareRoot >= 8 && actualTime > lastUpdate + 2000) {
             if (actualTime - lastUpdate < 200) {
                 return;
             }
             lastUpdate = actualTime;
 
             //switch to Magic8 ball tab here
+            String[] magic = getResources().getStringArray(R.array.responses);
+            String response = magic[(int)(Math.random() * magic.length)];
+            Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this,
+                sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                sensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
     }
 }

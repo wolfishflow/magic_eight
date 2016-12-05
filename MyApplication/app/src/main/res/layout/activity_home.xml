@@ -5,7 +5,6 @@
     android:id="@+id/colt_home_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context=".home.HomeActivity">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
