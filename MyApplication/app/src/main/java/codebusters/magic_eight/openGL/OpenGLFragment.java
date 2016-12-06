@@ -8,16 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import codebusters.magic_eight.R;
-
 /**
  * Created by alansimon on 2016-12-05.
  */
 
 public class OpenGLFragment extends Fragment{
 
-    //REFERENCE: https://developer.android.com/training/graphics/opengl/draw.html
-    //http://www.programering.com/a/MDM3cjNwATU.html
+    //  REFERENCE: https://developer.android.com/training/graphics/opengl/draw.html
     private GLSurfaceView mGLView;
 
     public OpenGLFragment()
@@ -29,7 +26,6 @@ public class OpenGLFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mGLView = new MyGLSurfaceView(getContext());
-
         return mGLView;
     }
 }
