@@ -17,6 +17,7 @@ public class FortuneActivity extends AppCompatActivity {
         String fortune;
         String sign = "virgo"; // replace with getting user's sign
         TextView txtFortune = (TextView) findViewById(R.id.fortune_test);
+
         try {
              fortune = new FortuneTask().execute(sign).get();
         } catch (Exception e) {

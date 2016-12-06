@@ -6,6 +6,9 @@ import android.opengl.GLSurfaceView;
 /**
  * Created by ahmadzam on 2016-11-24.
  */
+/**
+ * Created by ahmadzam on 2016-11-24.
+ */
 public class MyGLSurfaceView extends GLSurfaceView {
     private final MyGLRenderer mRenderer;
 

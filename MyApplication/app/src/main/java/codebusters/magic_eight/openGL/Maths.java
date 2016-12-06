@@ -2,7 +2,9 @@
  *
  */
 package codebusters.magic_eight.openGL;
-
+/**
+ * Created by ahmadzam on 2016-11-24.
+ */
 public final class Maths {
 
   static final double ONE_EIGHTY_DEGREES = Math.PI;

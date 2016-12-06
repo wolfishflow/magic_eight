@@ -46,6 +46,8 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
 
         BottomBar bottomBar = (BottomBar) getActivity().findViewById(R.id.bottomBar);
+
+
         db = new DatabaseConnector(getContext());
         String sign = "";
 

@@ -16,7 +16,6 @@ public class OpenGLFragment extends Fragment{
 
     //  REFERENCE: https://developer.android.com/training/graphics/opengl/draw.html
     private GLSurfaceView mGLView;
-
     public OpenGLFragment()
     {
         super();
