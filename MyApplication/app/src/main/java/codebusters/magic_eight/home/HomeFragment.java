@@ -1,7 +1,6 @@
 package codebusters.magic_eight.home;
 
 import android.app.Fragment;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;

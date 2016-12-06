@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import codebusters.magic_eight.R;
 import codebusters.magic_eight.dao.DatabaseConnector;
 import codebusters.magic_eight.dao.User;
-import codebusters.magic_eight.user.CreateUserFragment;
 
 /**
  * Created by alansimon on 2016-12-04.
