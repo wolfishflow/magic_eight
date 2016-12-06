@@ -5,15 +5,18 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.TextView;
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
@@ -38,6 +41,8 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
     private long lastUpdate;
     private SensorManager sensorManager;
     private BottomBar bottomBar;
+    private TextView tMagicMessage;
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,10 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         lastUpdate = System.currentTimeMillis();
+        tMagicMessage = (TextView) findViewById(R.id.tMagicMessage);
+        tMagicMessage.setTextColor(Color.WHITE);
+        tMagicMessage.setVisibility(View.GONE);
+        handler = new Handler();
 
         bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
@@ -121,9 +130,23 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
             //switch to Magic8 ball tab here
             String[] magic = getResources().getStringArray(R.array.responses);
             String response = magic[(int) (Math.random() * magic.length)];
-            Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, response, Toast.LENGTH_LONG).show();
+            tMagicMessage.setText(response);
+           // tMagicMessage.setVisibility(View.VISIBLE);
 
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    tMagicMessage.setVisibility(View.VISIBLE);
+                }
+            }, 4000);
 
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    tMagicMessage.setVisibility(View.GONE);
+                }
+            }, 8000);
             bottomBar.selectTabWithId(R.id.tab_magic_eight);
 
         }

@@ -19,6 +19,19 @@
         android:layout_gravity="bottom"
         app:bb_activeTabColor="#FFFFFF"
         app:bb_showShadow="true"
-        app:bb_tabXmlResource="@xml/bottombar_tabs" />
+        app:bb_tabXmlResource="@xml/bottombar_tabs" >
+
+    </com.roughike.bottombar.BottomBar>
+
+    <TextView
+        android:text="MAGIC MESSAGE"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/tMagicMessage"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="normal|bold"
+        android:fontFamily="casual"
+        android:layout_weight="1" />
 
 </android.support.design.widget.CoordinatorLayout>

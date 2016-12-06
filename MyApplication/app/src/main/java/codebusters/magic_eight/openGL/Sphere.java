@@ -17,6 +17,9 @@ import javax.microedition.khronos.opengles.GL10;
  * Rendering a sphere shape on opengl.
  *
  */
+/**
+ * Created by ahmadzam on 2016-11-24.
+ */
 public class Sphere {
 
   private static final int MAXIMUM_ALLOWED_DEPTH = 5; //MAX DEPTH
