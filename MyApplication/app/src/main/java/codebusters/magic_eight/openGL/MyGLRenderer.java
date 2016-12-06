@@ -37,6 +37,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
     public void onDrawFrame(GL10 gl) {
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+        gl.glClearColor(0.1f, 0.2f, 0.7f, 0.0f);
         gl.glLoadIdentity();
         gl.glTranslatef(0.0f, 0.0f, OBJECT_DISTANCE);
         gl.glRotatef(AXIAL_TILT_DEGRESS, 1, 0, 0);
@@ -46,7 +47,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, javax.microedition.khronos.egl.EGLConfig config) {
-        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        GLES20.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
         this.mEarth.loadGLTexture(gl, this.mContext, R.drawable.ball);
         gl.glEnable(GL10.GL_TEXTURE_2D);
         gl.glShadeModel(GL10.GL_SMOOTH);
