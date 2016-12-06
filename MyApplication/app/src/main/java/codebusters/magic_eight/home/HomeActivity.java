@@ -139,7 +139,7 @@ public class HomeActivity extends AppCompatActivity implements SensorEventListen
                 public void run() {
                     tMagicMessage.setVisibility(View.VISIBLE);
                 }
-            }, 4000);
+            }, 500);
 
             handler.postDelayed(new Runnable() {
                 @Override

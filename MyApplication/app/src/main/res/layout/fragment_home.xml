@@ -7,55 +7,70 @@
     android:background="@drawable/stars"
     android:fitsSystemWindows="true">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv_userinfo"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="50dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardUseCompatPadding="true"
-        android:backgroundTint="#55555599"
-        card_view:cardElevation="4dp">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_userinfo"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Your daily horoscope is: "
-                android:id="@+id/tv_label"
-                android:textSize="24sp"
-                android:textStyle="italic"
-                android:textColor="#ffffff"
-                style="@android:style/Widget.DeviceDefault.Light.TextView" />
+                app:cardUseCompatPadding="true"
+                android:backgroundTint="#55555599"
+                card_view:cardElevation="4dp">
 
-            <TextView
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Your daily horoscope is: "
+                        android:id="@+id/tv_label"
+                        android:textSize="24sp"
+                        android:textStyle="italic"
+                        android:textColor="#ffffff"
+                        style="@android:style/Widget.DeviceDefault.Light.TextView" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_label"
+                        android:text="You will die a horrible, horrible death."
+                        android:id="@+id/tv_horoscope"
+                        android:textColor="#ffffff"
+                        android:textSize="30sp" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <Button
+                android:background="#55555599"
+                android:id="@+id/btn_texttospeech"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_label"
-                android:text="You will die a horrible, horrible death."
-                android:id="@+id/tv_horoscope"
-                android:textColor="#ffffff"
-                android:textSize="30sp" />
+                android:layout_below="@+id/cv_userinfo"
+                android:layout_marginTop="20dip"
+                android:text="@string/tts"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="65dp"/>
 
         </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
+    </ScrollView>
 
-    <Button
-        android:background="#55555599"
-        android:id="@+id/btn_texttospeech"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cv_userinfo"
-        android:layout_marginTop="20dip"
-        android:text="@string/tts"
-        android:textColor="@android:color/white"
-        android:textStyle="bold" />
+
 
 
 </RelativeLayout>
